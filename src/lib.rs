@@ -29,4 +29,13 @@ mod tests {
 
         assert_eq!(arr, vec![]);
     }
+
+    #[test]
+    fn it_should_sort_a_few_unsorted_elements() {
+        let mut arr = vec![1, 8, 3, 2, 5, 10, -1];
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(arr, vec![-1, 1, 2, 3, 5, 8, 10]);
+    }
 }
