@@ -394,7 +394,7 @@ testowych aby zweryfikować czy implementacja algorytmu jest poprawna.
 
 1. Opis algorytmu Insertion Sort\
    <https://www.tutorialspoint.com/data_structures_algorithms/insertion_sort_algorithm.htm>
-2. Slajdy do przedmiotu Testowanie i Weryfikacja Oprogramowania na studiach
+2. Slajdy do przedmiotu _Testowanie i Weryfikacja Oprogramowania_ na studiach
    magisterskich OKNO
 3. Dokumentacja pisania testów w języku Rust
    <https://doc.rust-lang.org/book/ch11-01-writing-tests.html>
