@@ -1,11 +1,16 @@
 /// Sorts the array in-place to be in the ascending order.
 pub fn insertion_sort(arr: &mut Vec<i32>) {
-    if arr.is_empty() {
-        return;
-    }
+    for index_to_sort in 1..arr.len() {
+        let v = arr[index_to_sort];
 
-    arr[0] = 1;
-    arr[1] = 2;
+        (0..index_to_sort)
+            .find(|&i| arr[i] >= v)
+            .and_then(|index_to_insert_at| {
+                arr[index_to_insert_at..=index_to_sort].rotate_right(1);
+
+                Some(())
+            });
+    }
 }
 
 #[cfg(test)]
