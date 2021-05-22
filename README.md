@@ -29,7 +29,7 @@ cargo test
 Install [pandoc](https://pandoc.org/), pdflatex and texlive:
 
 ```sh
-sudo apt install pandoc pdflatex texlive
+sudo apt install pandoc pdflatex texlive texlive-lang-polish
 ```
 
 Then, to generate the reports, run:
