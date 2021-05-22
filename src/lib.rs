@@ -16,4 +16,13 @@ mod tests {
 
         assert_eq!(arr, vec![1, 2]);
     }
+
+    #[test]
+    fn it_should_work_for_empty_vectors() {
+        let mut arr = vec![];
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(arr, vec![]);
+    }
 }
