@@ -63,9 +63,8 @@ mod tests {
         }
     }
 
-    #[test]
-    fn it_should_sort_any_vector_which_implements_ord() {
-        let mut arr = vec![
+    fn get_simple_nodes_vector() -> Vec<MyNode> {
+        vec![
             MyNode {
                 key: 1,
                 metadata: 1,
@@ -86,13 +85,51 @@ mod tests {
                 key: 1,
                 metadata: 5,
             },
-        ];
+        ]
+    }
+
+    #[test]
+    fn it_should_sort_any_vector_which_implements_ord() {
+        let mut arr = get_simple_nodes_vector();
 
         insertion_sort(&mut arr);
 
         assert_eq!(
             arr.into_iter().map(|node| node.key).collect::<Vec<i32>>(),
             vec![1, 1, 1, 5, 8],
+        )
+    }
+
+    #[test]
+    fn it_should_perform_stable_sorting() {
+        let mut arr = get_simple_nodes_vector();
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(
+            arr,
+            vec![
+                MyNode {
+                    key: 1,
+                    metadata: 1
+                },
+                MyNode {
+                    key: 1,
+                    metadata: 3
+                },
+                MyNode {
+                    key: 1,
+                    metadata: 5
+                },
+                MyNode {
+                    key: 5,
+                    metadata: 2
+                },
+                MyNode {
+                    key: 8,
+                    metadata: 4
+                }
+            ]
         )
     }
 }
