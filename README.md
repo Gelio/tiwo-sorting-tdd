@@ -16,6 +16,8 @@ This project is a library, meaning it does not offer an executable binary.
 1. Rust installed
 2. Cargo installed
 
+See <https://www.rust-lang.org/tools/install> for installation instructions.
+
 ## Executing tests
 
 Run the following command to execute tests:
