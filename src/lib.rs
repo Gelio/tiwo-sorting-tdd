@@ -16,6 +16,7 @@ pub fn insertion_sort(arr: &mut Vec<impl Ord>) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::iter;
 
     #[test]
     fn it_should_swap_two_unsorted_elements() {
@@ -156,6 +157,17 @@ mod tests {
     fn it_should_not_do_anything_with_an_already_sorted_vector() {
         const N: usize = 1000;
         let mut arr: Vec<usize> = (0..=N).collect();
+        let expected_result = arr.clone();
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(arr, expected_result);
+    }
+
+    #[test]
+    fn it_should_not_do_anything_with_a_vector_of_the_same_number() {
+        const N: usize = 1000;
+        let mut arr: Vec<usize> = iter::repeat(1).take(N).collect();
         let expected_result = arr.clone();
 
         insertion_sort(&mut arr);
