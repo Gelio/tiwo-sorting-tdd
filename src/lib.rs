@@ -151,4 +151,15 @@ mod tests {
 
         assert_eq!(arr, vec![1]);
     }
+
+    #[test]
+    fn it_should_not_do_anything_with_an_already_sorted_vector() {
+        const N: usize = 1000;
+        let mut arr: Vec<usize> = (0..=N).collect();
+        let expected_result = arr.clone();
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(arr, expected_result);
+    }
 }
