@@ -132,4 +132,14 @@ mod tests {
             ]
         )
     }
+
+    #[test]
+    fn it_should_work_for_a_large_vector_of_reverse_sorted_numbers() {
+        const N: usize = 100000;
+        let mut arr = (0..=N).rev().collect();
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(arr, (0..=N).collect::<Vec<usize>>());
+    }
 }
