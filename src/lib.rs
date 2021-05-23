@@ -4,7 +4,7 @@ pub fn insertion_sort(arr: &mut Vec<impl Ord>) {
         let v = &arr[index_to_sort];
 
         (0..index_to_sort)
-            .find(|&i| arr[i].ge(v))
+            .find(|&i| arr[i].gt(v))
             .and_then(|index_to_insert_at| {
                 arr[index_to_insert_at..=index_to_sort].rotate_right(1);
 
