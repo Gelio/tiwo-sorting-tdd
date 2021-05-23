@@ -142,4 +142,13 @@ mod tests {
 
         assert_eq!(arr, (0..=N).collect::<Vec<usize>>());
     }
+
+    #[test]
+    fn it_should_work_for_a_single_element() {
+        let mut arr = vec![1];
+
+        insertion_sort(&mut arr);
+
+        assert_eq!(arr, vec![1]);
+    }
 }
