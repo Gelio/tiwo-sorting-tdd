@@ -3,13 +3,22 @@ pub fn insertion_sort(arr: &mut Vec<impl Ord>) {
     for index_to_sort in 1..arr.len() {
         let v = &arr[index_to_sort];
 
-        (0..index_to_sort)
-            .find(|&i| arr[i].gt(v))
-            .and_then(|index_to_insert_at| {
-                arr[index_to_insert_at..=index_to_sort].rotate_right(1);
+        if v.ge(&arr[index_to_sort - 1]) {
+            // The element is already at the correct place
+            continue;
+        }
 
-                Some(())
-            });
+        let index_to_insert_at = match arr[0..index_to_sort].binary_search(v) {
+            // The `index` could point to any element in a series if there are multiple
+            // equal elements. Need to find the end of the series.
+            Ok(index) => ((index + 1)..index_to_sort)
+                .into_iter()
+                .find(|&i| arr[i].gt(v))
+                .unwrap(),
+            Err(index_to_insert_at) => index_to_insert_at,
+        };
+
+        arr[index_to_insert_at..=index_to_sort].rotate_right(1);
     }
 }
 
@@ -136,7 +145,7 @@ mod tests {
 
     #[test]
     fn it_should_work_for_a_large_vector_of_reverse_sorted_numbers() {
-        const N: usize = 100000;
+        const N: usize = 100_000;
         let mut arr = (0..=N).rev().collect();
 
         insertion_sort(&mut arr);
@@ -155,7 +164,7 @@ mod tests {
 
     #[test]
     fn it_should_not_do_anything_with_an_already_sorted_vector() {
-        const N: usize = 1000;
+        const N: usize = 10_000_000;
         let mut arr: Vec<usize> = (0..=N).collect();
         let expected_result = arr.clone();
 
@@ -166,7 +175,7 @@ mod tests {
 
     #[test]
     fn it_should_not_do_anything_with_a_vector_of_the_same_number() {
-        const N: usize = 1000;
+        const N: usize = 10_000_000;
         let mut arr: Vec<usize> = iter::repeat(1).take(N).collect();
         let expected_result = arr.clone();
 
